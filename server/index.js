@@ -15,12 +15,16 @@ const Home = require("./controllers/controller");
 const LoginRoute = require("./routes/LoginRoute");
 const RegisterRoute = require("./routes/RegisterRoute");
 const verifyToken = require("./Middleware/middleware");
+const RecipeRoute = require("./routes/RecipeRoute");
 
 app.use("/auth", LoginRoute);
 app.use("/auth", RegisterRoute);
+app.use("/auth", RecipeRoute);
 app.use("/auth", router);
 
 router.get("/", verifyToken, Home.Home);
+
+module.exports = router;
 
 if (config) {
   app.listen(process.env.PORT, () => {
