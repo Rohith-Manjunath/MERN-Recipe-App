@@ -9,7 +9,12 @@ const Recipes = () => {
   }, []);
 
   const getRecipes = () => {
-    fetch("http://localhost:2000/auth/recipe")
+    fetch("http://localhost:2000/auth/recipe", {
+      method: "GET",
+      headers: {
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch recipe data");
