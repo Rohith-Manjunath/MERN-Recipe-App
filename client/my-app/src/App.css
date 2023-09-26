@@ -44,3 +44,49 @@ gap: 1rem;
   border:none ;
   cursor: pointer;
 }
+
+.fill-fields-error{
+  background-color: rgb(255, 0, 0);
+  color: white;
+  padding: 0.2rem;
+  transition: all 0.4s;
+  
+}
+
+nav{
+  background-color: rgb(0, 0, 0);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+nav ul li{
+  list-style-type: none;
+  display: inline;
+  margin: 1rem;
+  text-align: center;
+}
+
+nav ul li a{
+  color: white;
+  text-decoration: none;
+  font-weight: 900;
+
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  
+
+}
+nav .nav-right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul li a.active{
+  background-color: white;
+  color: black;
+
+
+}
