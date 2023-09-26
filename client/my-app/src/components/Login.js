@@ -1,40 +1,34 @@
 import React, { useState } from "react";
 import "../App.css";
 
-const Register = () => {
-  const [name, setName] = useState("");
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showError, setShowError] = useState(false); // State to control the error message visibility
+  const [showError, setShowError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email || !password || !name) {
-      // If any of the fields are empty, show the error message
+    if (!email || !password) {
       setShowError(true);
-      return; // Prevent further execution
+      return;
     }
 
     try {
-      const response = await fetch("http://localhost:2000/auth/register", {
+      let response = await fetch("http://localhost:2000/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ email, password }),
       });
 
-      if (response.ok) {
-        const user = await response.json();
+      response = await response.json();
 
-        if (user.error) {
-          alert("User already exists. Try with different email");
-        } else {
-          alert("Registration successful.");
-          localStorage.setItem("token", user.token);
-          window.location.href = "/";
-        }
+      if (!response.error) {
+        alert("Logn Successful");
+        localStorage.setItem("token", response.token);
+        window.location.href = "/";
       } else {
-        console.error("Failed to register user:", response.status);
+        alert(response.error);
       }
     } catch (error) {
       console.error("An error occurred while registering user:", error);
@@ -44,12 +38,8 @@ const Register = () => {
   return (
     <div className="SignupContainer">
       <form action="" onSubmit={(e) => handleSubmit(e)}>
-        <h2>SignUp</h2>
-        <input
-          type="text"
-          placeholder="Enter Your Name"
-          onChange={(e) => setName(e.target.value)}
-        />
+        <h2>Login</h2>
+
         <input
           type="text"
           placeholder="Enter Your email"
@@ -69,4 +59,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

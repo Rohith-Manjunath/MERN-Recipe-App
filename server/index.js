@@ -28,7 +28,6 @@ module.exports = router;
 
 if (config) {
   app.listen(process.env.PORT, () => {
-    console.log("DB Connected");
     console.log(`Server Started on port ${process.env.PORT}`);
   });
 }
