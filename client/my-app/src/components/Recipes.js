@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/RecipeStyle.css";
+import { Link } from "react-router-dom";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -77,6 +78,7 @@ const Recipes = () => {
           >
             Delete
           </button>
+          <Link to={"/addRecipes"}>Add more recipes</Link>
         </div>
       ))}
     </div>

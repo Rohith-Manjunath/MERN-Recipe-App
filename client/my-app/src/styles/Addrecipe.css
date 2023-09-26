@@ -86,3 +86,8 @@
     background-color: #ff9800;
   }
   
+  @media (min-width: 320px) and (max-width: 480px) {
+    .add-recipe {
+      margin-top: 15rem;
+    }
+  }

@@ -15,10 +15,11 @@ body{
 /* Container for the Signup form */
 .SignupContainer {
   border: 1px solid rgb(0, 0, 0);
-  width: 50%;
+  width: 90%;
+  
   max-width: 500px; /* Limit the maximum width for better readability */
   margin: auto;
-  margin-top: 5rem;
+  margin-top: 10rem;
   padding: 2rem;
   border-radius: 0.5rem; /* Rounded corners for a softer look */
   background-color: #f8f8f8; /* Light background color */
