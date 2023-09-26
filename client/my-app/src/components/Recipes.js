@@ -26,32 +26,30 @@ const Recipes = () => {
 
   const handleDeleteRecipe = async (recipeId) => {
     try {
-      const response = await fetch(
-        `http://localhost:2000/auth/recipe/${recipeId}`,
-        {
-          method: "DELETE",
-        }
-      );
+      // Confirm the deletion with the user
+      if (window.confirm("Are you sure you want to delete this recipe?")) {
+        // Send a DELETE request to the server
+        const response = await fetch(
+          `http://localhost:2000/auth/recipe/${recipeId}`,
+          {
+            method: "DELETE",
+          }
+        );
 
-      if (response.ok) {
-        if (
-          window.confirm("Are you sure you wanna delete this recipe??") === true
-        ) {
+        if (response.ok) {
           alert("Recipe deleted successfully");
-          setRecipes(response.recipes);
-          window.location.href = "/recipes";
+
+          window.location = "/recipes";
         } else {
           getRecipes();
-          window.location.href = "/recipes";
+          window.location = "/recipes";
         }
-      } else {
-        console.error("Failed to delete recipe:", response.status);
       }
     } catch (error) {
       console.error("An error occurred while deleting the recipe:", error);
-    }
 
-    window.location.href = "/recipes";
+      window.location.href = "/recipes";
+    }
   };
 
   return (
