@@ -29,4 +29,23 @@ const getAllRecipes = async (req, res) => {
   }
 };
 
-module.exports = { getAllRecipes, createRecipe };
+const deleteRecipe = async (req, res) => {
+  try {
+    const recipeId = req.params.id;
+
+    const deletedRecipe = await Recipe.deleteOne({ _id: recipeId });
+
+    if (!deletedRecipe.deletedCount) {
+      return res.status(404).json({ error: "Recipe not found" });
+    }
+
+    const recipes = await Recipe.find();
+
+    res.status(200).json({ message: "Recipe deleted successfully", recipes });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+module.exports = { getAllRecipes, createRecipe, deleteRecipe };

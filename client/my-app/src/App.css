@@ -53,43 +53,53 @@ gap: 1rem;
   
 }
 
-nav{
-  background-color: rgb(0, 0, 0);
+/* Navbar container */
+nav {
+  background-color: #333;
   color: white;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem;
+  align-items: center;
+  padding: 1rem;
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-nav ul li{
+/* Navigation items */
+nav ul {
   list-style-type: none;
-  display: inline;
-  margin: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 1rem;
   text-align: center;
 }
 
-nav ul li a{
+/* Navigation links */
+nav ul li a {
   color: white;
   text-decoration: none;
-  font-weight: 900;
-
-  padding: 0.2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
   border-radius: 0.2rem;
-  
-
+  transition: background-color 0.3s, color 0.3s;
 }
-nav .nav-right{
+
+nav .nav-right {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-nav ul li a.active{
+nav ul li a.active {
   background-color: white;
-  color: black;
-
-
+  color: #333;
+  border-radius: 0.2rem;
 }
