@@ -52,3 +52,17 @@
     margin-top: 10px;
   }
   
+  .delete-button {
+    background-color: #dc3545; /* Choose your desired background color */
+    color: #fff; /* Text color */
+    padding: 8px 15px; /* Adjust padding */
+    border: none;
+    border-radius: 3px;
+    font-size: 14px; /* Adjust font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333; /* Adjust the hover background color */
+  }
