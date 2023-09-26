@@ -31,6 +31,9 @@ const Navbar = () => {
                   <NavLink to="/">Home</NavLink>{" "}
                 </li>
                 <li>
+                  <NavLink to="/addRecipe">Add Recipe</NavLink>{" "}
+                </li>
+                <li>
                   <NavLink to="login" onClick={LogoutUser}>
                     Logout
                   </NavLink>
