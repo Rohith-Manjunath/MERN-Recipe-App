@@ -122,3 +122,52 @@ nav ul li a.active {
   color: #333;
   border-radius: 0.2rem;
 }
+
+
+
+nav .nav-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+}
+
+.hamburger-icon{
+  display: none;
+  transition: all 0.4s ease-in-out;
+}
+
+@media (320px <=width <=768px) {
+  
+nav{
+  flex-direction: column;
+  height:3.5rem;
+  padding: 0;
+
+}
+
+.hamburger-icon{
+  display: block;
+  font-size: 1.5rem;
+}
+
+
+.nav-right{
+  background-color: #333;
+  transform: translateX(-400px);
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+nav ul li {
+  display: block;
+  margin: 1rem;
+
+}
+.nav-right{
+  align-self: flex-start;
+}
+
+
+}
