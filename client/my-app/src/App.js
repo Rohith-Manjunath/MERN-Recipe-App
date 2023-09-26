@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import PrivateComponent from "./components/PrivateComponent";
 import Recipes from "./components/Recipes";
+import AddRecipe from "./components/AddRecipe";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route element={<PrivateComponent />}>
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/" element={<Home />} />
+          <Route path="/addRecipe" element={<AddRecipe />} />
         </Route>
       </Routes>
     </Router>

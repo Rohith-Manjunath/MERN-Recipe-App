@@ -1,0 +1,54 @@
+/* CSS for Recipes component */
+
+/* Style for the outer container */
+.Recipes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+    margin-top: 5rem;
+  }
+  
+  /* Style for each individual recipe card */
+  .Recipe {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px); /* Three columns with 20px gap */
+  }
+  
+  /* Style for recipe title */
+  .Recipe h2 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for recipe image */
+  .Recipe img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  /* Style for ingredients list */
+  .Recipe h3 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .Recipe ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 10px;
+  }
+  
+  /* Style for instructions */
+  .Recipe p {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-top: 10px;
+  }
+  

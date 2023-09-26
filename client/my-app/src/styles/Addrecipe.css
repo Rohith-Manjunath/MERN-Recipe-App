@@ -1,0 +1,88 @@
+/* AddRecipe.css */
+
+.add-recipe {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5rem;
+  }
+  
+  .add-recipe h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .add-recipe form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-recipe label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .add-recipe input[type="text"],
+  .add-recipe textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  .add-recipe input[type="text"] {
+    width: 100%;
+  }
+  
+  .add-recipe textarea {
+    width: 100%;
+    height: 150px;
+  }
+  
+  .add-recipe button[type="submit"],
+  .add-recipe button[type="button"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .add-recipe button[type="button"] {
+    background-color: #28a745;
+  }
+  
+  .add-recipe button[type="submit"]:hover,
+  .add-recipe button[type="button"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Additional styling for ingredient inputs */
+  .add-recipe .ingredient-inputs {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-recipe .ingredient-inputs input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .add-recipe .ingredient-inputs button {
+    align-self: flex-start;
+    background-color: #ffc107;
+  }
+  
+  .add-recipe .ingredient-inputs button:hover {
+    background-color: #ff9800;
+  }
+  
