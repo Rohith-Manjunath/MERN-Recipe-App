@@ -36,13 +36,16 @@ const AddRecipe = () => {
     e.preventDefault();
     // Send a POST request to add the recipe to the server
     try {
-      const response = await fetch("http://localhost:2000/auth/recipe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(recipe),
-      });
+      const response = await fetch(
+        "https://recipe-app-mern.onrender.com/auth/recipe",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(recipe),
+        }
+      );
 
       if (response.ok) {
         // Recipe added successfully, you can show a success message or redirect to another page

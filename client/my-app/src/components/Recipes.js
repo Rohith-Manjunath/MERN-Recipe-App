@@ -10,7 +10,7 @@ const Recipes = () => {
   }, []);
 
   const getRecipes = () => {
-    fetch("http://localhost:2000/auth/recipe", {
+    fetch("https://recipe-app-mern.onrender.com/auth/recipe", {
       method: "GET",
       headers: {
         Authorization: `${localStorage.getItem("token")}`,
