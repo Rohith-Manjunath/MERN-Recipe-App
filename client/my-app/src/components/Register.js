@@ -17,11 +17,14 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:2000/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-      });
+      const response = await fetch(
+        "https://recipe-app-mern.onrender.com/auth/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password }),
+        }
+      );
 
       if (response.ok) {
         const user = await response.json();

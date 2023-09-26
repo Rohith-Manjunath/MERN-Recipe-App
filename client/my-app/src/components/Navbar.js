@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faRotate } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
+  const [bool, setBool] = useState(false);
   const LogoutUser = () => {
     if (window.confirm("You wanna logout?")) {
       localStorage.clear();
@@ -14,13 +17,35 @@ const Navbar = () => {
 
   const auth = localStorage.getItem("token");
 
+  const toggleMenu = () => {
+    setBool(!bool);
+  };
+
   return (
     <div>
       <nav>
         <div className="nav-left">
+          <FontAwesomeIcon
+            icon={faBars}
+            className="hamburger-icon"
+            onClick={toggleMenu}
+            style={
+              bool
+                ? { transform: "rotate(90deg)" }
+                : { transform: "rotate(0deg)" }
+            }
+          />
+
           <h2>Recipe Sharing App</h2>
         </div>
-        <div className="nav-right">
+        <div
+          className="nav-right"
+          style={
+            bool
+              ? { transform: "translateX(0px)" }
+              : { transform: "translateX(-800px)" }
+          }
+        >
           <ul>
             {auth ? (
               <>

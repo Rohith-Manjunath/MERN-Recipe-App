@@ -15,11 +15,14 @@ const Login = () => {
     }
 
     try {
-      let response = await fetch("http://localhost:2000/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      let response = await fetch(
+        "https://recipe-app-mern.onrender.com/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       response = await response.json();
 
