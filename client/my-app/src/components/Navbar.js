@@ -57,6 +57,9 @@ const Navbar = () => {
                   <NavLink to="/addRecipe">Add Recipe</NavLink>{" "}
                 </li>
                 <li>
+                  <NavLink to="/favouriteRecipes">Favourites</NavLink>{" "}
+                </li>
+                <li>
                   <NavLink to="login" onClick={LogoutUser}>
                     Logout
                   </NavLink>

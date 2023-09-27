@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import PrivateComponent from "./components/PrivateComponent";
 import Recipes from "./components/Recipes";
 import AddRecipe from "./components/AddRecipe";
+import LikedProducts from "./components/likedProducts";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route element={<PrivateComponent />}>
+          <Route path="/favouriteRecipes" element={<LikedProducts />} />
+
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/" element={<Recipes />} />
           <Route path="/addRecipe" element={<AddRecipe />} />

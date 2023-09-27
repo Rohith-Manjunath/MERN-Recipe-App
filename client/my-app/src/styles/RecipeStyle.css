@@ -77,6 +77,29 @@
   background-color: #c82333;
 }
 
+/* RecipeStyle.css */
+
+/* Existing styles for other elements... */
+
+.add-to-favorites-button {
+  background-color: #007bff; /* Blue color, you can change this to your preferred color */
+  color: #fff; /* Text color */
+  border: none;
+  padding: 5px 10px;
+  margin-top: 10px;
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-to-favorites-button:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+/* Adjust the styles as needed to match your design preferences */
+
+
 /* Responsive Styles */
 
 /* For devices with a screen width between 320px and 480px */
