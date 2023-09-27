@@ -36,7 +36,7 @@ const Recipes = () => {
       if (window.confirm("Are you sure you want to delete this recipe?")) {
         // Send a DELETE request to the server
         const response = await fetch(
-          `http://localhost:2000/auth/recipe/${recipeId}`,
+          `https://recipe-app-mern.onrender.com/auth/recipe/${recipeId}`,
           {
             method: "DELETE",
           }
@@ -55,6 +55,28 @@ const Recipes = () => {
       console.error("An error occurred while deleting the recipe:", error);
 
       window.location.href = "/recipes";
+    }
+  };
+
+  const handleAddToFavorites = async (recipeId) => {
+    try {
+      // Send a POST request to the LikedList controller
+      const response = await fetch(
+        `https://recipe-app-mern.onrender.com/auth/likedRecipes/${recipeId}`,
+        {
+          method: "POST",
+        }
+      );
+
+      if (response.ok) {
+        alert("Recipe added to favorites successfully");
+        window.location.href = "/favouriteRecipes";
+      } else {
+        const data = await response.json();
+        alert(data.error);
+      }
+    } catch (error) {
+      console.error("An error occurred while adding to favorites:", error);
     }
   };
 
@@ -77,6 +99,12 @@ const Recipes = () => {
             onClick={() => handleDeleteRecipe(recipe._id)}
           >
             Delete
+          </button>
+          <button
+            className="add-to-favorites-button"
+            onClick={() => handleAddToFavorites(recipe._id)}
+          >
+            Add to Favorites
           </button>
           <Link to={"/addRecipes"}>Add more recipes</Link>
         </div>

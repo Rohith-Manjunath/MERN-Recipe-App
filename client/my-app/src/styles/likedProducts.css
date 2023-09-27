@@ -1,0 +1,75 @@
+/* LikedProducts.css */
+
+.likedRecipes {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .likedRecipes h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .likedRecipes ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .likedRecipes .list {
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .likedRecipes h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .likedRecipes p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  .likedRecipes img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .likedRecipes h4 {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  .likedRecipes ul.liked-product-ingredients {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  .likedRecipes ul.liked-product-ingredients li {
+    font-size: 16px;
+  }
+  
+  .likedRecipes ol.liked-product-instructions {
+    list-style-type: decimal;
+    margin-left: 20px;
+  }
+  
+  .likedRecipes ol.liked-product-instructions li {
+    font-size: 16px;
+  }
+  
+  
+  
