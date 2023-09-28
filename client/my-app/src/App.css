@@ -16,10 +16,9 @@ body{
 .SignupContainer {
   border: 1px solid rgb(0, 0, 0);
   width: 90%;
-  
   max-width: 500px; /* Limit the maximum width for better readability */
   margin: auto;
-  margin-top: 10rem;
+  margin-top: 5rem;
   padding: 2rem;
   border-radius: 0.5rem; /* Rounded corners for a softer look */
   background-color: #f8f8f8; /* Light background color */
@@ -130,6 +129,7 @@ nav .nav-left {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  padding: 0.5rem;
 
 }
 
@@ -138,36 +138,49 @@ nav .nav-left {
   transition: all 0.4s ease-in-out;
 }
 
-@media (320px <=width <=768px) {
-  
-nav{
-  flex-direction: column;
-  height:3.5rem;
-  padding: 0;
+/* ... Previous CSS Code ... */
 
-}
-
-.hamburger-icon{
-  display: block;
+/* Hamburger icon styles */
+.hamburger-icon {
+  display: none;
   font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.4s ease-in-out;
 }
 
+/* Media query for mobile and tablet devices */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    align-items: flex-start;
+    position: relative;
+  }
 
-.nav-right{
-  background-color: #333;
-  transform: translateX(-400px);
-  width: 100%;
-  transition: all 0.5s ease-in-out;
-}
+  .hamburger-icon {
+    display: block;
+  }
 
-nav ul li {
-  display: block;
-  margin: 1rem;
+  .nav-right {
+    background-color: #333;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    top: 3.5rem;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
 
-}
-.nav-right{
-  align-self: flex-start;
-}
+  .nav-right.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
 
-
+  nav ul li {
+    display: block;
+    margin: 0.5rem;
+    text-align: center;
+  }
 }

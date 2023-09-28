@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faRotate } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
-  const [bool, setBool] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
   const LogoutUser = () => {
     if (window.confirm("You wanna logout?")) {
       localStorage.clear();
@@ -15,11 +16,11 @@ const Navbar = () => {
     }
   };
 
-  const auth = localStorage.getItem("token");
-
   const toggleMenu = () => {
-    setBool(!bool);
+    setIsOpen(!isOpen);
   };
+
+  const auth = localStorage.getItem("token");
 
   return (
     <div>
@@ -29,23 +30,12 @@ const Navbar = () => {
             icon={faBars}
             className="hamburger-icon"
             onClick={toggleMenu}
-            style={
-              bool
-                ? { transform: "rotate(90deg)" }
-                : { transform: "rotate(0deg)" }
-            }
+            style={isOpen ? { transform: "rotate(90deg)" } : {}}
           />
 
           <h2>Recipe Sharing App</h2>
         </div>
-        <div
-          className="nav-right"
-          style={
-            bool
-              ? { transform: "translateX(0px)" }
-              : { transform: "translateX(-800px)" }
-          }
-        >
+        <div className={`nav-right ${isOpen ? "open" : ""}`}>
           <ul>
             {auth ? (
               <>
