@@ -73,6 +73,9 @@ const Navbar = () => {
                 <li>
                   <NavLink to="signup">SignUp</NavLink>
                 </li>
+                <li>
+                  <NavLink to="forgotPassword">Forgot Password</NavLink>
+                </li>
               </>
             )}
           </ul>

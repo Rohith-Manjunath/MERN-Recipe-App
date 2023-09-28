@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -54,6 +55,8 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Submit</button>
+
+        <Link to="/forgotPassword">Forgot Password</Link>
       </form>
       {showError && (
         <span className="fill-fields-error">Please Fill all the fields</span>
