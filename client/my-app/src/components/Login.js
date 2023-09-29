@@ -28,7 +28,7 @@ const Login = () => {
       response = await response.json();
 
       if (!response.error) {
-        alert("Logn Successful");
+        alert("Login Successful");
         localStorage.setItem("token", response.token);
         window.location.href = "/";
       } else {
