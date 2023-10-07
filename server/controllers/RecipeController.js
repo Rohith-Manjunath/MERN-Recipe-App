@@ -111,6 +111,29 @@ const removeFromLikedRecipes = async (req, res) => {
   }
 };
 
+const searchRecipes = async (req, res) => {
+  const searchKey = req.params.key;
+
+  try {
+    // Use a case-insensitive regular expression to search for recipes by title
+    const recipes = await Recipe.find({
+      title: { $regex: new RegExp(searchKey, "i") },
+    });
+
+    // If no matching recipes found, return a meaningful message
+    if (recipes.length === 0) {
+      return res.status(404).json({ message: "No recipes found" });
+    }
+
+    // If matching recipes found, return them in the response
+    res.status(200).json(recipes);
+  } catch (error) {
+    // Handle any server error and return a proper error response
+    console.error("Error searching recipes:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 module.exports = {
   getAllRecipes,
   createRecipe,
@@ -118,4 +141,5 @@ module.exports = {
   getAllLikedRecipes,
   LikedList,
   removeFromLikedRecipes,
+  searchRecipes,
 };

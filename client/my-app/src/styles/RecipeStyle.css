@@ -97,6 +97,10 @@
   background-color: #0056b3; /* Darker blue color on hover */
 }
 
+.no-recipes{
+  margin-top: 5rem;
+}
+
 /* Adjust the styles as needed to match your design preferences */
 
 
@@ -105,7 +109,6 @@
 /* For devices with a screen width between 320px and 480px */
 @media (min-width: 320px) and (max-width: 768px) {
   .Recipes {
-    margin-top: 10rem;
     gap: 10px; /* Adjust the gap as needed for smaller screens */
   }
 
@@ -138,3 +141,5 @@
     width: calc(30% - 50px); /* Four columns with 50px gap */
   }
 }
+
+

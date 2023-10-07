@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/RecipeStyle.css";
 import { Link } from "react-router-dom";
+import "../styles/Searchbar.css";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -80,35 +81,76 @@ const Recipes = () => {
     }
   };
 
+  const SearchRecipes = async (e) => {
+    try {
+      if (e.target.value) {
+        let Searchedrecipes = await fetch(
+          `http://localhost:2000/auth/searchRecipes/${e.target.value}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        Searchedrecipes = await Searchedrecipes.json();
+
+        if (!Searchedrecipes.message) {
+          setRecipes(Searchedrecipes);
+        } else {
+          setRecipes([]);
+        }
+      } else {
+        getRecipes();
+      }
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
   return (
     <div className="Recipes">
-      {recipes.map((recipe) => (
-        <div key={recipe._id} className="Recipe">
-          <h2>{recipe.title}</h2>
-          <img src={recipe.imageUrl} alt={recipe.title} />
-          <h3>Ingredients:</h3>
-          <ul>
-            {recipe.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
-          <h3>Instructions:</h3>
-          <p>{recipe.instructions}</p>
-          <button
-            className="delete-button"
-            onClick={() => handleDeleteRecipe(recipe._id)}
-          >
-            Delete
-          </button>
-          <button
-            className="add-to-favorites-button"
-            onClick={() => handleAddToFavorites(recipe._id)}
-          >
-            Add to Favorites
-          </button>
-          <Link to={"/addRecipes"}>Add more recipes</Link>
-        </div>
-      ))}
+      <div className="search-bar">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search recipes"
+          onChange={(e) => SearchRecipes(e)}
+        />
+      </div>
+
+      {recipes.length > 0 ? (
+        recipes.map((recipe) => (
+          <div key={recipe._id} className="Recipe">
+            <h2>{recipe.title}</h2>
+            <img src={recipe.imageUrl} alt={recipe.title} />
+            <h3>Ingredients:</h3>
+            <ul>
+              {recipe.ingredients.map((ingredient, index) => (
+                <li key={index}>{ingredient}</li>
+              ))}
+            </ul>
+            <h3>Instructions:</h3>
+            <p>{recipe.instructions}</p>
+            <button
+              className="delete-button"
+              onClick={() => handleDeleteRecipe(recipe._id)}
+            >
+              Delete
+            </button>
+            <button
+              className="add-to-favorites-button"
+              onClick={() => handleAddToFavorites(recipe._id)}
+            >
+              Add to Favorites
+            </button>
+            <Link to={"/addRecipes"}>Add more recipes</Link>
+          </div>
+        ))
+      ) : (
+        <h2 className="no-recipes">No Recipes Found</h2>
+      )}
     </div>
   );
 };
