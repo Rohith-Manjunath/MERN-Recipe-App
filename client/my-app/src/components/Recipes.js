@@ -85,7 +85,7 @@ const Recipes = () => {
     try {
       if (e.target.value) {
         let Searchedrecipes = await fetch(
-          `http://localhost:2000/auth/searchRecipes/${e.target.value}`,
+          `https://recipe-app-mern.onrender.com/auth/searchRecipes/${e.target.value}`,
           {
             method: "GET",
             headers: {
