@@ -18,6 +18,6 @@ router.get("/likedRecipes", getAllLikedRecipes);
 router.delete("/recipe/:id", deleteRecipe);
 router.post("/likedRecipes/:id", LikedList);
 router.delete("/removeLiked/:id", removeFromLikedRecipes);
-router.get("/searchRecipes/:key", searchRecipes);
+router.get("/addRecipe/:key", searchRecipes);
 
 module.exports = router;

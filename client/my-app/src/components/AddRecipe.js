@@ -4,8 +4,9 @@ import "../styles/Addrecipe.css";
 const AddRecipe = () => {
   const [recipe, setRecipe] = useState({
     title: "",
-    ingredients: [],
+    ingredients: [""],
     instructions: "",
+    imageUrl: "",
   });
 
   const handleInputChange = (e) => {
@@ -17,10 +18,13 @@ const AddRecipe = () => {
   };
 
   const handleAddIngredient = () => {
-    setRecipe({
-      ...recipe,
-      ingredients: [...recipe.ingredients, ""],
-    });
+    const lastIngredient = recipe.ingredients[recipe.ingredients.length - 1];
+    if (lastIngredient !== "") {
+      setRecipe({
+        ...recipe,
+        ingredients: [...recipe.ingredients, ""],
+      });
+    }
   };
 
   const handleIngredientChange = (index, value) => {
@@ -35,6 +39,16 @@ const AddRecipe = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Send a POST request to add the recipe to the server
+
+    const nonEmptyIngredients = recipe.ingredients.filter(
+      (ingredient) => ingredient.trim() !== ""
+    );
+
+    if (nonEmptyIngredients.length === 0) {
+      window.alert("Please provide at least one non-empty ingredient.");
+      return;
+    }
+
     try {
       const response = await fetch(
         "https://recipe-app-mern.onrender.com/auth/recipe",
