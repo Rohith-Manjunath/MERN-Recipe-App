@@ -127,9 +127,13 @@ const Recipes = () => {
             <img src={recipe.imageUrl} alt={recipe.title} />
             <h3>Ingredients:</h3>
             <ul>
-              {recipe.ingredients.map((ingredient, index) => (
-                <li key={index}>{ingredient}</li>
-              ))}
+              {recipe.ingredients.length > 0 && (
+                <ul>
+                  {recipe.ingredients.map((ingredient, index) => (
+                    <li key={index}>{ingredient}</li>
+                  ))}
+                </ul>
+              )}
             </ul>
             <h3>Instructions:</h3>
             <p>{recipe.instructions}</p>
@@ -145,7 +149,7 @@ const Recipes = () => {
             >
               Add to Favorites
             </button>
-            <Link to={"/addRecipes"}>Add more recipes</Link>
+            <Link to={"/addRecipe"}>Add more recipes</Link>
           </div>
         ))
       ) : (
