@@ -148,8 +148,23 @@ const Recipes = () => {
                 </ul>
               )}
             </ul>
-            <h3>Instructions:</h3>
-            <p>{recipe.instructions}</p>
+            <div className="instructions-container">
+              <h3>Instructions:</h3>
+              {recipe.instructions.match(/^\d+\./) ? (
+                <div className="instructions-text">
+                  {recipe.instructions.split("\n").map((step, index) => (
+                    <p key={index}>{step}</p>
+                  ))}
+                </div>
+              ) : (
+                <ol className="instructions-list">
+                  {recipe.instructions.split("\n").map((step, index) => (
+                    <li key={index}>{step}</li>
+                  ))}
+                </ol>
+              )}
+            </div>
+
             <button
               className="delete-button"
               onClick={() => handleDeleteRecipe(recipe._id)}

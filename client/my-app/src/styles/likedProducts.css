@@ -94,3 +94,7 @@
     background-color: #ff0000; /* Darker red on hover */
   }
 }
+
+.instructions-list li {
+  margin-bottom: 8px; /* Adjust the value as needed to control the spacing */
+}
