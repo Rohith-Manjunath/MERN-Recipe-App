@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/ForgotPassword.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const UpdatePassword = () => {
   const [formData, setFormData] = useState({
@@ -31,9 +32,14 @@ const UpdatePassword = () => {
       if (response.ok) {
         const data = await response.json();
         setMessage(data.message);
-        window.location.href = "/login";
+        toast.success("Password Updated successfully");
+
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 4000);
       } else {
         setMessage("An error occurred while updating the password.");
+        toast.error("Error in Password update");
       }
     } catch (error) {
       console.error(error);
@@ -68,6 +74,7 @@ const UpdatePassword = () => {
         <button type="submit">Update Password</button>
       </form>
       {message && <p className="error-message">{message}</p>}
+      <ToastContainer />
     </div>
   );
 };

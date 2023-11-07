@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "../App.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS for styling
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showError, setShowError] = useState(false); // State to control the error message visibility
-
+  const Email = email.toLowerCase();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -22,7 +24,7 @@ const Register = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, password }),
+          body: JSON.stringify({ name, email: Email, password }),
         }
       );
 
@@ -30,17 +32,19 @@ const Register = () => {
         const user = await response.json();
 
         if (user.error) {
-          alert("User already exists. Try with different email");
+          toast.warn("User already exists. Try with different email");
         } else {
-          alert("Registration successful.");
+          toast.success("Registration successful.");
           localStorage.setItem("token", user.token);
-          window.location.href = "/";
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 4000);
         }
       } else {
         console.error("Failed to register user:", response.status);
       }
     } catch (error) {
-      console.error("An error occurred while registering user:", error);
+      toast.error("An error occurred while registering user:", error);
     }
   };
 
@@ -54,7 +58,7 @@ const Register = () => {
           onChange={(e) => setName(e.target.value)}
         />
         <input
-          type="text"
+          type="email"
           placeholder="Enter Your email"
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -68,6 +72,7 @@ const Register = () => {
       {showError && (
         <span className="fill-fields-error">Please Fill all the fields</span>
       )}
+      <ToastContainer />
     </div>
   );
 };

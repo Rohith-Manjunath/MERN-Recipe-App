@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Addrecipe.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS for styling
 
 const AddRecipe = () => {
   const [recipe, setRecipe] = useState({
@@ -45,7 +47,7 @@ const AddRecipe = () => {
     );
 
     if (nonEmptyIngredients.length === 0) {
-      window.alert("Please provide at least one non-empty ingredient.");
+      toast.warn("Please provide at least one non-empty ingredient.");
       return;
     }
 
@@ -63,13 +65,16 @@ const AddRecipe = () => {
 
       if (response.ok) {
         // Recipe added successfully, you can show a success message or redirect to another page
-        console.log("Recipe added successfully");
-        window.location.href = "/recipes";
+        toast.success("Recipe added successfully");
+
+        setTimeout(() => {
+          window.location.href = "/recipes";
+        }, 4000);
       } else {
-        console.error("Failed to add recipe:", response.status);
+        toast.error("Failed to add recipe:", response.status);
       }
     } catch (error) {
-      console.error("An error occurred while adding the recipe:", error);
+      toast.error("An error occurred while adding the recipe:", error);
     }
   };
 
@@ -121,6 +126,7 @@ const AddRecipe = () => {
           <button type="submit">Add Recipe</button>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };
