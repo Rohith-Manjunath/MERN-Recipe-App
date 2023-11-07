@@ -64,7 +64,7 @@ const LikedProducts = () => {
 
   return (
     <div className="likedRecipes">
-      <h2>Liked Products</h2>
+      <h2>Favourites</h2>
       <ul>
         {likedProducts.map((product) => (
           <li key={product._id} className="list">
@@ -74,16 +74,24 @@ const LikedProducts = () => {
               <img src={product.imageUrl} alt={product.title} />
               <h4>Ingredients:</h4>
               <ul>
-                {product.ingredients.map((ingredient, index) => (
-                  <li key={index}>{ingredient}</li>
-                ))}
+                {product.ingredients.length > 0 && (
+                  <ul className="ingredients-list">
+                    {product.ingredients.map((ingredient, index) => (
+                      <li key={index}>{ingredient}</li>
+                    ))}
+                  </ul>
+                )}
               </ul>
-              <h4>Instructions:</h4>
-              <ol>
-                {product.instructions.split("\n").map((step, index) => (
-                  <li key={index}>{step}</li>
-                ))}
-              </ol>
+
+              <div className="instructions-container">
+                <h4>Instructions:</h4>
+                <div className="instructions-list">
+                  {product.instructions.split("\n").map((step, index) => (
+                    <p key={index}>{step}</p>
+                  ))}
+                </div>
+              </div>
+
               <button
                 className="remove-item-button"
                 onClick={() => handleRemoveItem(product._id)}
