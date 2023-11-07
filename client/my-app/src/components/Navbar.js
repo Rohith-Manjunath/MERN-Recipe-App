@@ -22,6 +22,10 @@ const Navbar = () => {
 
   const auth = localStorage.getItem("token");
 
+  const handleToggleMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div>
       <nav>
@@ -40,14 +44,20 @@ const Navbar = () => {
             {auth ? (
               <>
                 <li>
-                  <NavLink to="recipes">Recipes</NavLink>{" "}
+                  <NavLink to="recipes" onClick={handleToggleMenu}>
+                    Recipes
+                  </NavLink>{" "}
                 </li>
 
                 <li>
-                  <NavLink to="/addRecipe">Add Recipe</NavLink>{" "}
+                  <NavLink to="/addRecipe" onClick={handleToggleMenu}>
+                    Add Recipe
+                  </NavLink>{" "}
                 </li>
                 <li>
-                  <NavLink to="/favouriteRecipes">Favourites</NavLink>{" "}
+                  <NavLink to="/favouriteRecipes" onClick={handleToggleMenu}>
+                    Favourites
+                  </NavLink>{" "}
                 </li>
                 <li>
                   <NavLink to="login" onClick={LogoutUser}>

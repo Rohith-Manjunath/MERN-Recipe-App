@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../styles/RecipeStyle.css";
 import { Link } from "react-router-dom";
 import "../styles/Searchbar.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS for styling
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -44,18 +46,22 @@ const Recipes = () => {
         );
 
         if (response.ok) {
-          alert("Recipe deleted successfully");
+          toast.success("Recipe deleted successfully");
 
-          window.location = "/recipes";
+          setTimeout(() => {
+            window.location = "/recipes";
+          }, 4000);
         } else {
           getRecipes();
           window.location = "/recipes";
         }
       }
     } catch (error) {
-      console.error("An error occurred while deleting the recipe:", error);
+      toast.error("An error occurred while deleting the recipe:", error);
 
-      window.location.href = "/recipes";
+      setTimeout(() => {
+        window.location.href = "/recipes";
+      }, 3000);
     }
   };
 
@@ -70,11 +76,18 @@ const Recipes = () => {
       );
 
       if (response.ok) {
-        alert("Recipe added to favorites successfully");
-        window.location.href = "/favouriteRecipes";
+        toast.success("Recipe added to favorites successfully");
+
+        setTimeout(() => {
+          window.location.href = "/favouriteRecipes";
+        }, 4000);
       } else {
         const data = await response.json();
-        alert(data.error);
+        if (data.error === "Recipe already exists in your favorites") {
+          toast.warn("Recipe already exists in your favorites");
+        } else {
+          toast.error(data.error);
+        }
       }
     } catch (error) {
       console.error("An error occurred while adding to favorites:", error);
@@ -155,6 +168,7 @@ const Recipes = () => {
       ) : (
         <h2 className="no-recipes">No Recipes Found</h2>
       )}
+      <ToastContainer />
     </div>
   );
 };

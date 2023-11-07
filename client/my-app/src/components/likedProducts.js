@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/likedProducts.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const LikedProducts = () => {
   const [likedProducts, setLikedProducts] = useState([]);
@@ -17,7 +18,7 @@ const LikedProducts = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to fetch liked products");
+        toast.error("Failed to fetch liked products");
       }
 
       const data = await response.json();
@@ -25,7 +26,7 @@ const LikedProducts = () => {
       // Set the fetched data to the state
       setLikedProducts(data);
     } catch (error) {
-      console.error("Error fetching liked products:", error);
+      toast.error("Error fetching liked products:", error);
     }
   };
 
@@ -44,18 +45,20 @@ const LikedProducts = () => {
         );
 
         if (response.ok) {
-          alert("Item Removed successfully");
+          toast.success("Item Removed successfully");
           fetchLikedProducts();
-          window.location.href = "/favouriteRecipes";
+          setTimeout(() => {
+            window.location.href = "/favouriteRecipes";
+          }, 4000);
         } else {
           const data = await response.json();
-          console.error(data.error);
+          toast.error(data.error);
         }
       } else {
         window.location.href = "/favouriteRecipes";
       }
     } catch (error) {
-      console.error("Error removing item from liked products:", error);
+      toast.error("Error removing item from liked products:", error);
     }
   };
 
@@ -91,6 +94,7 @@ const LikedProducts = () => {
           </li>
         ))}
       </ul>
+      <ToastContainer />
     </div>
   );
 };
